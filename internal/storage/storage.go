@@ -5,16 +5,12 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
-	"github.com/vas-ide/storage/internal/file"
+	"github.com/vas-ide/storage/v2/internal/file"
 )
 
-
-
-type Storage struct{
+type Storage struct {
 	files map[uuid.UUID]*file.File
-
 }
-
 
 func NewStorage() *Storage {
 	return &Storage{
@@ -22,17 +18,14 @@ func NewStorage() *Storage {
 	}
 }
 
-
-
- 
-func(s Storage) Upload(filename string, blob []byte) (*file.File, error){
-	newFile, err := file.NewFile(filename,blob)
+func (s Storage) Upload(filename string, blob []byte) (*file.File, error) {
+	newFile, err := file.NewFile(filename, blob)
 	if err != nil {
 		return nil, err
 	}
 
 	s.files[newFile.ID] = newFile
-	return newFile,err
+	return newFile, err
 }
 
 func (s *Storage) GetByID(fileID uuid.UUID) (*file.File, error) {
@@ -41,9 +34,5 @@ func (s *Storage) GetByID(fileID uuid.UUID) (*file.File, error) {
 		return nil, errors.New(fmt.Sprintf("File %v not found", fileID))
 	}
 
-	return reqFile,nil
+	return reqFile, nil
 }
-
-
-
-

@@ -1,4 +1,4 @@
-module github.com/vas-ide/storage
+module github.com/vas-ide/storage/v2
 
 go 1.23.4
 
