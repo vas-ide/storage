@@ -2,6 +2,6 @@ package storage
 
 import "github.com/vas-ide/storage/v2/internal/storage"
 
-func NewStorage() *storage.Storage {
+func NewStorage(someString string) *storage.Storage {
 	return storage.NewStorage()
 }
